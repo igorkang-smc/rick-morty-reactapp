@@ -16,7 +16,6 @@ function List() {
         }
     }
     const paginate = (array, page_size, page_number) => {
-        console.log(page_number)
         return array.slice((page_number - 1) * page_size - 1 > 0 ? (page_number - 1) * page_size - 1 : (page_number - 1) * page_size, page_number * page_size);
     }
 
@@ -33,9 +32,26 @@ function List() {
         fetchData();
     }, [characters.length, currentPage])
 
+    const getEpisodePathName = (episode) => {
+        let path = '';
+        if (episode <= 11) {
+            path = `s:1-e:${episode}`
+        } else if (episode > 11 && episode <= 21) {
+            path = `s:2-e:${episode - 11}`
+        } else if (episode > 21 && episode <= 31) {
+            path = `s:3-e:${episode - 21}`
+        } else if (episode > 31 && episode <= 41) {
+            path = `s:4-e:${episode - 31}`
+        } else if (episode > 41 && episode <= 51) {
+            path = `s:5-e:${episode - 41}`
+        }
+
+        return path;
+    }
+
     const getEpisodeString = (episodes, id) => {
-        if (episodes.length > 5) {
-            episodes = episodes.slice(episodes.length - 5, episodes.length);
+        if (episodes.length > 1) {
+            episodes = [episodes[0], episodes[episodes.length - 1]];
         }
         let episodesArr = [];
         episodes.map(episode => {
@@ -43,7 +59,9 @@ function List() {
             episodesArr.push(href);
         });
 
-        return (<a target='_blank' href={`https://rickandmortyapi.com/api/character/${id}`}>{episodesArr.toString()}</a>);
+        let episodesPath = getEpisodePathName(episodesArr[0]);
+
+        return (<a target='_blank' href={`https://rezka.ag/cartoons/comedy/2136-rik-i-morti-2013.html#t:238-${episodesPath}`}>{episodesArr.toString()}</a>);
     }
 
     return (

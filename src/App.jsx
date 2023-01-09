@@ -5,7 +5,7 @@ function App() {
 
     return (
         <div className='container'>
-            <nav className='navbar sticky-top navbar-light bg-dark mb-5'>
+            <nav className='navbar sticky-top navbar-light bg-dark text-light mb-5'>
                 <h1>Rick and Morty</h1>
             </nav>
             <List />
