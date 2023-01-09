@@ -61,7 +61,7 @@ function List() {
 
         let episodesPath = getEpisodePathName(episodesArr[0]);
 
-        return (<a target='_blank' href={`https://rezka.ag/cartoons/comedy/2136-rik-i-morti-2013.html#t:238-${episodesPath}`}>{episodesArr.toString()}</a>);
+        return (<a href={`https://rezka.ag/cartoons/comedy/2136-rik-i-morti-2013.html#t:238-${episodesPath}`}>{episodesArr.toString()}</a>);
     }
 
     return (
